@@ -2,7 +2,7 @@
 
 import PaginatedData from "@/components/PaginatedData";
 import { http } from "@/utils/axios";
-import { Typography } from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -13,17 +13,31 @@ export default function Home() {
     setPosts(postsRequest.data)
   }
 
-  useEffect(() => {retrievePosts()}, [])
+  useEffect(() => { retrievePosts() }, [])
 
   return (
     <>
-      <PaginatedData data={posts} ItemRender={({item}) => (
-        <>
-          <article>
-            <Typography>{item.title}</Typography>
-          </article>
-        </>
-      )} />
+      <PaginatedData data={posts} Render={({ items }) => {
+        return (
+          <Grid container spacing={2}>
+            {items.map((item: any) => (
+              <Grid key={item.id} xs={12} item>
+                <Card>
+                  <CardContent>
+                    <Typography variant="h5" component="div">
+                      {item.title}
+                    </Typography>
+                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                      {item.userId}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        )
+      }}
+      />
     </>
   )
 }
