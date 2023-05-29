@@ -1,12 +1,25 @@
+import { http } from "@/utils/axios";
 import { Button, Card, CardContent, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 
-export default function PostsEditor () {
+interface PostsEditorProps {
+    onPostCreated: (post: any) => any
+    onClose: () => void
+}
+
+export default function PostsEditor ({onPostCreated, onClose}: PostsEditorProps) {
     const formik = useFormik({
         initialValues: {title: '', body: ''},
-        onSubmit: (values, {setSubmitting}) => {
+        onSubmit: async (values, {setSubmitting}) => {
             setSubmitting(true)
             console.log(values)
+            const result = await http.post('/posts', {
+                ...values,
+                userId: 1
+            })
+            console.log(result.data)
+            onPostCreated(result.data)
+            onClose()
             setSubmitting(false)
         }
     })

@@ -21,8 +21,11 @@ export default function Home() {
     <section>
       <header style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
         <Typography variant="h3">Listado de artículos</Typography>
-        <ModalActivator Activator={(props) => (<Button {...props} variant={'contained'}>Añadir artículo</Button>)} Content={() => {
-          return <PostsEditor />
+        <ModalActivator Activator={(props) => (<Button {...props} variant={'contained'}>Añadir artículo</Button>)} Content={({handleClose}) => {
+          return <PostsEditor
+            onClose={handleClose}
+            onPostCreated={post => setPosts([...posts, post])}
+          />
         }} />
       </header>
       <PaginatedData data={posts} Render={({ items }) => {
