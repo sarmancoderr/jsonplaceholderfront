@@ -2,6 +2,7 @@
 
 import ModalActivator from "@/components/ModalActivator";
 import PaginatedData from "@/components/PaginatedData";
+import PostCardItem from "@/components/forms/PostCardItem";
 import PostsEditor from "@/components/forms/PostsEditor";
 import { http } from "@/utils/axios";
 import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
@@ -33,16 +34,7 @@ export default function Home() {
           <Grid container spacing={2}>
             {items.map((item: any) => (
               <Grid key={item.id} xs={12} item>
-                <Card>
-                  <CardContent>
-                    <Typography variant="h5" component="div">
-                      {item.title}
-                    </Typography>
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                      {item.userId}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                <PostCardItem post={item} />
               </Grid>
             ))}
           </Grid>
