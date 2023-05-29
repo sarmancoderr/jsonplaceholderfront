@@ -11,10 +11,13 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@dicebear/collection": "^6.0.4",
+    "@dicebear/core": "^6.0.4",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.2",
+    "@resvg/resvg-js": "^2.4.1",
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",

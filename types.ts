@@ -7,6 +7,16 @@ export interface Post {
     id: number
 }
 
+// ===== COMMENT
+
+export interface Comment {
+    postId: number;
+    id:     number;
+    name:   string;
+    email:  string;
+    body:   string;
+}
+
 // ===== USER
 
 export interface User {

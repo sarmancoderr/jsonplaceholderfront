@@ -1,6 +1,7 @@
 import { Post, User } from "@/types"
 import { http } from "@/utils/axios"
-import { Card , CardContent, Typography} from "@mui/material"
+import { Button, Card , CardActions, CardContent, Typography} from "@mui/material"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 interface PostCardItemProps {
@@ -28,6 +29,11 @@ export default function PostCardItem ({post}: PostCardItemProps) {
                 {user ? user.name : post.userId}
             </Typography>
             </CardContent>
+            <CardActions>
+                <Button disableElevation href={'/posts/' + post.id} LinkComponent={Link} variant="contained">
+                    Ir al post
+                </Button>
+            </CardActions>
         </Card>
     )
 }
