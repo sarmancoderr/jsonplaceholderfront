@@ -11,8 +11,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: '70%',
   bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 4,
+  boxShadow: 24
 };
 
 export default function BaseModal({children, handleClose, open}: any) {
