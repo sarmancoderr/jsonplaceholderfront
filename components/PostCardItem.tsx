@@ -3,7 +3,7 @@ import { http } from "@/utils/axios"
 import { Button, Card , CardActions, CardContent, Typography} from "@mui/material"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import AuthorChip from "../AuthorChip"
+import AuthorChip from "./AuthorChip"
 
 interface PostCardItemProps {
     post: Post

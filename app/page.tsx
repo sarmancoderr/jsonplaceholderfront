@@ -2,7 +2,7 @@
 
 import ModalActivator from "@/components/ModalActivator";
 import PaginatedData from "@/components/PaginatedData";
-import PostCardItem from "@/components/forms/PostCardItem";
+import PostCardItem from "@/components/PostCardItem";
 import PostsEditor from "@/components/forms/PostsEditor";
 import { http } from "@/utils/axios";
 import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
