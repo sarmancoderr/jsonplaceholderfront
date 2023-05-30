@@ -1,21 +1,26 @@
 "use client"
 
+import AlbumModal from "@/components/AlbumModal";
 import AuthorChip from "@/components/AuthorChip";
-import { Todo, User } from "@/types";
+import ModalActivator from "@/components/ModalActivator";
+import { Album, Todo, User } from "@/types";
 import { http } from "@/utils/axios";
-import { Accordion, AccordionDetails, AccordionSummary, Box, Card, CardContent, CardHeader, List, ListItem, ListItemText, Paper, Table, TableCell, TableRow } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Card, CardContent, CardHeader, Chip, List, ListItem, ListItemText, Paper, Table, TableCell, TableRow } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function UserPage ({params}: any) {
     console.log(params)
     const [user, setUser] = useState<User | null>(null)
     const [todos, setTodos] = useState<Todo[]>([])
+    const [albums, setAlbums] = useState<Album[]>([])
 
     useEffect(() => {(async () => {
         const userRequest = await http.get('/users/' + params.userId)
         const todosRequest = await http.get('/todos?userId=' + params.userId)
+        const albumsRequest = await http.get('/albums?userId=' + params.userId)
         setUser(userRequest.data)
         setTodos(todosRequest.data)
+        setAlbums(albumsRequest.data)
     })()}, [])
 
     if (!user) return <p>Cargando...</p>
@@ -68,7 +73,11 @@ export default function UserPage ({params}: any) {
                     <Accordion>
                         <AccordionSummary>Albumes</AccordionSummary>
                         <AccordionDetails>
-                            <p>Albumes</p>
+                            <Box sx={{display: 'flex', overflow: 'auto', flexWrap: 'wrap'}}>
+                                {albums.map(t => <ModalActivator key={t.id}
+                                    Activator={(props) => <Chip {...props} sx={{margin: '10px'}} clickable key={t.id} label={t.title} />} 
+                                    Content={() => (<AlbumModal albumId={t.id} />)} />)}
+                            </Box>
                         </AccordionDetails>
                     </Accordion>
                 </CardContent>
