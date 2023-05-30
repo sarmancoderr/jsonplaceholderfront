@@ -25,23 +25,25 @@ export default function PostsEditor ({onPostCreated, onClose}: PostsEditorProps)
     })
 
     return (
-        <Card elevation={0} component={'form'} onSubmit={formik.handleSubmit}>
-            <CardContent>
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Typography variant="h5">Editor de posts</Typography>
+        <form onSubmit={formik.handleSubmit}>
+            <Card elevation={0} component={'form'}>
+                <CardContent>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <Typography variant="h5">Editor de posts</Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField name="title" onChange={formik.handleChange} label="Título del post" fullWidth />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField name="body" onChange={formik.handleChange} label="Cuerpo del post" fullWidth />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Button type="submit" variant="contained" disableElevation>Guardar</Button>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12}>
-                        <TextField name="title" onChange={formik.handleChange} label="Título del post" fullWidth />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField name="body" onChange={formik.handleChange} label="Cuerpo del post" fullWidth />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button type="submit" variant="contained" disableElevation>Guardar</Button>
-                    </Grid>
-                </Grid>
-            </CardContent>
-        </Card>
+                </CardContent>
+            </Card>
+        </form>
     )
 }
