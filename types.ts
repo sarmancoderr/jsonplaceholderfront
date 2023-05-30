@@ -1,3 +1,12 @@
+// ====== TODOS
+
+export interface Todo {
+    userId:    number;
+    id:        number;
+    title:     string;
+    completed: boolean;
+}
+
 // ====== POST
 
 export interface Post {
