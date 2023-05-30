@@ -3,6 +3,7 @@ import { http } from "@/utils/axios"
 import { Button, Card , CardActions, CardContent, Typography} from "@mui/material"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import AuthorChip from "../AuthorChip"
 
 interface PostCardItemProps {
     post: Post
@@ -26,7 +27,7 @@ export default function PostCardItem ({post}: PostCardItemProps) {
                 {post.title}
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {user ? user.name : post.userId}
+                {user && <AuthorChip author={user} />}
             </Typography>
             </CardContent>
             <CardActions>
